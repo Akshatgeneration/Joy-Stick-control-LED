@@ -1,0 +1,42 @@
+#define jx A1
+#define jy A2
+int led1=7;
+int led2=8;
+int led3=9;
+int led4=11;
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+pinMode(led1,OUTPUT);
+pinMode(led2,OUTPUT);
+pinMode(led3,OUTPUT);
+pinMode(led4,OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+int xv=analogRead(jx);
+int yv=analogRead(jy);
+Serial.println(yv); // open serial monitor to get location of joystick and change the values in xv<=___ and yv==1023
+
+if(xv<=800 && yv==1023)
+digitalWrite(led1,HIGH);
+else
+digitalWrite(led1,LOW);
+
+if(xv==0 && yv<=512)
+digitalWrite(led2,HIGH);
+else
+digitalWrite(led2,LOW);
+
+if(xv<=600 && yv==0)
+digitalWrite(led3,HIGH);
+else
+digitalWrite(led3,LOW);
+
+if(xv==1023 && yv<=800)
+digitalWrite(led4,HIGH);
+else
+digitalWrite(led4,LOW);
+}
